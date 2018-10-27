@@ -37,20 +37,23 @@
     ```
 5. html特殊字符  
     | 原义字符 | 等价字符引用 | 
-    | -------- | ------------ |
-    | < | `&lt;` |
-    | > | `&gt;` |
-    | " | `&quot;` |
-    | ' | `&apos;` |
-    | & | `&amp;` |
-    | 空格 | `&nbsp;` |
+    | :------: | :----------: |
+    |    <     |    `&lt;`    |
+    |    >     |    `&gt;`    |
+    |    "     |    `&quot;`  |
+    |    '     |    `&apos;`  |
+    |    &     |    `&amp;`   |
+    |   空格   |    `&nbsp;`  | 
+
 6. html注释  
-   `<!-- <p>Hello World</p> -->`
+   `<!-- <p>Hello World</p> -->`    
+
 7. css与javascript的引用
     ```
     <link rel="stylesheet" href="my-css-file.css">
     <script src="my-js-file.js"></script>
-    ```
+    ``` 
+    
 8. html中的强调语气的元素（可被屏幕阅读器读取 em、strong）
     ```
     <p>I am <em>glad</em> you weren't <em>late</em>.</p>
@@ -71,7 +74,7 @@
     </a>
     2. 统一资源定位器url (Uniform Resource Locator)
         指定文件在网络上的位置
-    3. 路径path
+    3.  路径path
         目录结构:
         -project
             -css
@@ -96,7 +99,7 @@
             http://www.example.com/projects/index.html    
         相对URL: 指向与你链接的文件相关的位置
             dog.png位于img文件夹下  其相对路径为img/dog.png
-    6. 下载时，使用下载属性
+    6.  下载时，使用下载属性
         <a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=w     in64&lang=en-US" download="firefox-latest-64bit-installer.exe">
             Download Latest Firefox for Windows (64-bit) (English, US)
         </a>
@@ -129,26 +132,47 @@
             <dt>javascript</dt>
             <dd>一门编程语言</dd>
         </dl>
-        ```
-12. html中的引用（blockquote）
+    ``` 
+12. html的高级文字格式
     ```
-    <p>According to the <a href="https://www.baidu.com">
-        <cite>百度一下</cite></a>:
-    </p>
-    <blockquote cite="https://www.baidu.com">
-        <h1>百度一下，你就知道</h1>
-    </blockquote>
+    (1) 引用（blockquote）
+        <p>According to the <a href="https://www.baidu.com">
+            <cite>百度一下</cite></a>:
+        </p>
+        <blockquote cite="https://www.baidu.com">
+            <h1>百度一下，你就知道</h1>
+        </blockquote>
+    (2) 缩略语（abbr）
+        <p>我们使用 <abbr title="Hypertext Markup Language">HTML</abbr> 构建我们的网页</p>
+    (3) 标记作者联系方式（address）
+        <address>
+            <p>郑州市，高新区，梧桐街碧桃路</p>
+        </address>
+    (4) 上标（sup）和下标（sub）
+        <p>x<sup>2</sup> + y<sub>1</sub> = 5</p>
+    (5) 展示计算机代码
+        code: 用于标记计算机通用代码
+        pre: 保留原格式
+        var: 标记具体变量名
+        kbd: 用于标记输入电脑的键盘
+        samp: 用于标记计算机程序的输出
+        实例：
+        <pre><code>var para = document.querySelector('p');
+            para.onclick = function() {
+              alert('Owww, stop poking me!');
+            }</code>
+        </pre>
+    (6) 标记时间和日期 
+        <time datetime="2018-10-26T08:30:03GMT" pubdate="pubdate">2018-10-26</time>
     ```
-13. html中的缩略语（abbr）  
-    `<p>我们使用 <abbr title="Hypertext Markup Language">HTML</abbr> 构建我们的网页</p>`
-14. html中标记作者联系方式的元素（address） 
+13. html网站架构及相关的语义化标签 -- [实例](./demo01.html)
     ```
-    <address>
-        <p>郑州市，高新区，梧桐街碧桃路</p>
-    </address>
-    ```
-15.
-        
+    1.标题 <header>
+    2.导航 <nav>
+    3.主要内容 <main> , 内容段落可用<article>
+    4.侧栏 <aside>
+    5.页脚 <footer>
+    ```   
     
         
     
