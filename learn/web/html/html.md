@@ -165,14 +165,15 @@
     (6) 标记时间和日期 
         <time datetime="2018-10-26T08:30:03GMT" pubdate="pubdate">2018-10-26</time>
     ```
-13. html网站架构及相关的语义化标签 -- [实例](./demo02.html)
+13. html网站架构及相关的语义化标签 -- [实例](../demo02.html)
     ```
     1.标题 <header>
     2.导航 <nav>
     3.主要内容 <main> , 内容段落可用<article>
     4.侧栏 <aside>
     5.页脚 <footer>
-    ```   
+    ```  
+14.  
     
         
     
