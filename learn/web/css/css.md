@@ -88,16 +88,34 @@
             revert: 若当前节点设置样式，就保持原来的值
     ```
 5. 框模型
-    ![](../images/box-model.png)
+    [](../images/box-model.png)
     ```
-    1.框模型结构
-    ![](../images/box-model.png)
-    
-    
-        
-            
-    
-    
-        
-    
-    
+    1.框模型的属性
+        (1) width和height 设置内容框的宽度和高度
+        (2) padding 内边距，内容框的外边缘与边界的内边缘之间
+            padding-top/right/bottom/left
+        (3) border 框的边界
+            border: width style color
+        (4) margin 外边距， 边界的外部区域
+            margin-top/right/bottom/left
+    2.高级的框操作
+        (1) 溢出overflow
+            auto： 内容过多，显示滚动条
+            hidden: 内容过多， 溢出内容隐藏
+            visible: 内容过多，溢出内容显示在盒子的外边
+        (2) 背景裁剪 background clip
+            background-clip: border-box; 保留边框
+            background-clip: padding-box; 保留内边框中的内容,其余剪除
+            background-clip: content-box; 只保留内容框
+        (3) 轮廓outline 轮廓被勾画于在框边界之外，外边距区域之内
+    ```
+6. CSS框类型（通过display设置）
+    ```
+    1. 块框 block 独占一行
+    2. 行内框 inline 默认
+    3. 行内块状框 inine-block 在一行中占据一块
+    ```
+7. CSS的调试
+    - 调试前：[demo03-before.html](./demo03-before.html)
+    - 调试后：[demo03-after.html](./demo03-after.html)
+8. 
