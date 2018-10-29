@@ -1,0 +1,99 @@
+html {
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #00539F;
+}
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #FF9500;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    font-size: 60px;
+    color: #00539F;
+    text-shadow: 3px 3px 2px black;
+}
+h1:before {
+    content: url('../images/cow.gif');
+}
+h1:after {
+    content: url('../images/dog.gif');
+}
+h2, hr {
+    margin: 0;
+    font-size: 25px;
+}
+img {
+    display: block;
+    margin: 5px auto;
+}
+p, li {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+a:link {
+    color: blue;
+}
+a:hover {
+    color: green;
+}
+a:active {
+    color: black;
+}
+/* a:visited {
+    color: gray;
+} */
+table { 
+    width: 100%;
+    border-collapse: collapse; 
+}
+table, th, td {
+    border: 1px solid gray;
+}
+table tr td:first-child { 
+    text-align: center;
+    vertical-align: middle;
+}
+table tr td:nth-child(2) {
+    text-align: left;
+}
+table tr td:last-child {
+    text-align: left;
+}
+th { 
+    text-align: center;
+    vertical-align: middle;
+    height: 50px; 
+}
+form {
+    display: flex;
+}
+input {
+    width: 20px;
+    height: 20px;
+}
+span {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    box-sizing: border-box ;
+}
+span.spancenter {
+    margin-top: -3px;
+}
+
+
+
