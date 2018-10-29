@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 通用选择器 */
+        * {
+            background: gray;
+        }
+
+        /* 元素选择器 */
+        h1 {
+            color: red;
+            text-shadow: 1px 1px 1px black;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
+            padding: 3px;
+            text-align: center;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) inset, -2px -2px 5px rgba(255, 255, 255, 0.5) inset;
+        }
+
+        /* 类选择器 */
+        .first {
+            font-weight: bold;
+        }
+
+        .second {
+            border: 1px dotted red;
+        }
+
+        .third {
+            border-bottom: 1px solid purple;
+        }
+
+        .done {
+            text-decoration: line-through;
+        }
+
+        /* 处理多个类 */
+        .base-box {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+            padding: 3px 3px 3px 7px;
+        }
+
+        .important {
+            font-weight: bold;
+        }
+
+        .editor-note {
+            background-color: #9999ff;
+            border-left: 6px solid #333399;
+        }
+
+        .warning {
+            background-color: #ff9999;
+            border-left: 6px solid #993333;
+        }
+
+        /* 属性选择器 */
+        [data-vegetable] {
+            color: green;
+        }
+
+        [data-vegetable="liquid"] {
+            background-color: goldenrod;
+        }
+
+        [data-vegetable~="spicy"] {
+            color: red;
+        }
+
+        /* 选择属性值是 fr 或值以 fr- 开头的元素 */
+        [lang|="fr"] {
+            font-weight: bold;
+        }
+
+        /* 选择属性值中包含not spicy的所有元素*/
+        [data-vegetable*="not spicy"] {
+            color: yellowgreen;
+        }
+
+        /* 选择属性值以kg结尾的所有元素 */
+        [data-quantity$="kg"] {
+            font-weight: bold;
+        }
+
+        /* 选择属性值以optional开头的所有元素 */
+        [data-quantity^="optional"] {
+            opacity: 0.5;
+        }
+
+        /* 伪类选择器 */
+        ul.two {
+            padding: 0;
+        }
+
+        ul.two li {
+            padding: 3px;
+            margin-bottom: 5px;
+            list-style-type: none;
+        }
+
+        ul.two a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul.two a:hover {
+            text-decoration: underline;
+            color: red;
+        }
+
+        ul.two li:nth-of-type(2n) {
+            background-color: #ccc;
+        }
+
+        ul.two li:nth-of-type(2n+1) {
+            background-color: #eee;
+        }
+
+        /* 伪元素选择器 */
+        p.two::first-line {
+            font-weight: bold;
+        }
+
+        p.two::first-letter {
+            font-size: 40px;
+            border: 1px solid black;
+            background: #333399;
+            display: block;
+            float: left;
+            padding: 2px;
+            margin-right: 4px;
+        }
+
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        /* 选择器组 */
+        table td, table th {
+            border: 1px solid red;
+            padding: 2px;
+        }
+        /* 后代选择器 */
+        table thead th {
+            background: yellowgreen;
+        }
+        /* 相邻兄弟选择器 */
+        table tbody td + td {
+            text-align: center;
+        }
+        /* 通用兄弟选择器 */
+        table tbody td:first-child ~ td {
+            color: tomato;
+        }
+        /* 组合选择器 */
+        .with-currency[lang="en-US"] td:last-child::before {
+            content: '$';
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+
+    <p>This is a paragraph.</p>
+
+    <ul>
+        <li class="first done">Create an HTML document</li>
+        <li class="second done">Create a CSS style sheet</li>
+        <li class="third">Link them all together</li>
+    </ul>
+    <!-- 处理多个类 -->
+    <p class="base-box warning important">My first paragraph.</p>
+
+    <p class="base-box editor-note important">My second paragraph.</p>
+
+    <p class="important">My third paragraph</p>
+
+    我的食谱配料: <i lang="fr-FR">Poulet basquaise</i>
+    <ul>
+        <li data-quantity="1kg" data-vegetable>Tomatoes</li>
+        <li data-quantity="3" data-vegetable>Onions</li>
+        <li data-quantity="3" data-vegetable>Garlic</li>
+        <li data-quantity="700g" data-vegetable="not spicy like chili">Red pepper</li>
+        <li data-quantity="2kg" data-meat>Chicken</li>
+        <li data-quantity="optional 150g" data-meat>Bacon bits</li>
+        <li data-quantity="optional 10ml" data-vegetable="liquid">Olive oil</li>
+        <li data-quantity="25cl" data-vegetable="liquid">White wine</li>
+    </ul>
+
+    <ul class="two">
+        <li><a href="#">United Kingdom</a></li>
+        <li><a href="#">Germany</a></li>
+        <li><a href="#">Finland</a></li>
+        <li><a href="#">Russia</a></li>
+        <li><a href="#">Spain</a></li>
+        <li><a href="#">Poland</a></li>
+    </ul>
+
+    <p class="two">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Ut tempora earum totam ea cupiditate voluptatibus temporibus
+        omnis molestiae distinctio labore velit, voluptates dolores.
+        Voluptatum eveniet atque dolor cumque nam accusantium?
+    </p>
+
+    <table lang="en-US" class="with-currency">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Qty.</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th colspan="2" scope="row">Total:</th>
+                <td>148.55</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>Lawnchair</td>
+                <td>1</td>
+                <td>137.00</td>
+            </tr>
+            <tr>
+                <td>Marshmallow rice bar</td>
+                <td>2</td>
+                <td>1.10</td>
+            </tr>
+            <tr>
+                <td>Book</td>
+                <td>1</td>
+                <td>10.45</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
