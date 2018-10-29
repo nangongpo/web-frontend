@@ -36,6 +36,7 @@
     </html>
     ```
 5. html特殊字符  
+
     | 原义字符 | 等价字符引用 | 
     | :------: | :----------: |
     |    <     |    `&lt;`    |
@@ -165,16 +166,150 @@
     (6) 标记时间和日期 
         <time datetime="2018-10-26T08:30:03GMT" pubdate="pubdate">2018-10-26</time>
     ```
-13. html网站架构及相关的语义化标签 -- [实例](../demo02.html)
+13. html网站架构及相关的语义化标签 -- [实例](./demo02.html)
     ```
-    1.标题 <header>
-    2.导航 <nav>
-    3.主要内容 <main> , 内容段落可用<article>
-    4.侧栏 <aside>
-    5.页脚 <footer>
-    ```  
-14.  
-    
+    1. 标题 <header>
+    2. 导航 <nav>
+    3. 主要内容 <main> , 内容段落可用<article>
+    4. 侧栏 <aside>
+    5. 页脚 <footer>
+    ```   
+14. 多媒体与嵌入 -- [实例](./demo04.html)
+    ```
+    1.图片 img
+      (1)替换元素(img、video):元素的内容和尺寸由外部资源所定义，而不是元素本身
+      (2)备选文本(alt):对图片的文字描述
+      (3)搭配说明文字解说图片的元素(容器--figure，说明文字--figcaption)
+    2.视频 video 的属性 -- webm(firefox、chrome支持) mp4(IE、safari支持)
+        1. src
+        2. controls 控件
+        3. width 和 height 
+        4. autoplay 自动播放
+        5. loop 循环播放
+        6. muted 静音
+        7. poster 海报
+        8. preload  预加载 (none, auto, metadata)
+    3.音频 audio 的属性 -- mp3 和 ogg格式
+        与video相比，没有poster、width、height
+    4.显示音轨文件（.vtt）
+        kind属性值(subtitles、caption、descriptions)
+        srclang设置编写字幕的语言
+        
+        <video controls>
+            <source src="example.mp4" type="video/mp4">
+            <source src="example.webm" type="video/webm">
+            <track kind="subtitles" src="subtitles_en.vtt" srclang="en">
+        </video>
+    ```
+15. html中的嵌入元素（iframe嵌入网页, embed和object嵌入PDF、SVG以及Flash）
+    ```
+    1.iframe的属性
+        allowfullscreen: 全屏
+        frameborder属性值：1表示绘制边框 0表示删除边框
+        src: url路径
+        width 和 height
+        sandbox属性值为空字符串:提高安全性，可用以下属性值解除相关限制：
+            allow-forms:允许执行表单
+            allow-popups:允许弹窗
+            allow-scripts:允许执行脚本
+            allow-same-origin:将嵌入的内容视作正常来源
+            allow-storage-access-by-user-activation:允许储存
+    2.内容安全策略CSP
+        1.可用meta元素配置策略
+            <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+        2.在任何网站中触发IE7兼容性的示例
+            <meta http-equiv =“X-UA-Compatible”content =“IE = 7”/>
+        3.防止网页被别人的网站iframe
+            通过在服务端设置HTTP头部中的X-Frame-Options信息
+                (1)DENY：页面不能被嵌入到任何iframe或frame中；
+                (2)SAMEORIGIN：页面只能被本站页面嵌入到iframe或者frame中；
+                (3)ALLOW-FROM：页面允许frame或frame加载。
+            在服务端设置的方式如下：
+                Java代码:
+                response.addHeader("x-frame-options","SAMEORIGIN");
+                Nginx配置:
+                add_header X-Frame-Options SAMEORIGIN
+                Apache配置:
+                Header always append X-Frame-Options SAMEORIGIN
+    3.内网和企业项目中嵌入插件
+        1.embed嵌入Flash插件
+            <embed src="whoosh.swf" quality="medium"
+               bgcolor="#ffffff" width="550" height="400"
+               name="whoosh" align="middle" allowScriptAccess="sameDomain"
+               allowFullScreen="false" type="application/x-shockwave-flash"
+               pluginspage="http://www.macromedia.com/go/getflashplayer">
+        2.object将PDF嵌入页面
+            <object data="mypdf.pdf" type="application/pdf"
+                width="800" height="1200" typemustmatch>
+                <p>You don't have a PDF plugin, but you can <a href="myfile.pdf">download the PDF file.</a></p>
+            </object>
+    4.html5中的新标签
+        1.video 加载视频
+        2.audio 加载音频
+        3.canvas 用于javascript生成的2D和3D图形
+        4.svg 嵌入矢量图形
+    ```
+16. 位图和矢量图的区别
+    ```
+    1.位图：使用像素网格来定义（.bmp, .png, .jpg, .gif）
+    2.矢量图SVG：使用算法来定义，其中包含图形和路径的定义
+        1.html引入.svg(兼容写法)
+            <img src="equilateral.png" alt="triangle with equal sides" srcset="equilateral.svg">
+        2.css引入.svg(兼容写法)
+            background: url("fallback.png") no-repeat center;
+            background-image: url("image.svg");
+            background-size: contain;
+        3.html引入SVG
+            <svg width="300" height="200">
+                <rect width="100%" height="100%" fill="green" />
+            </svg>
+        4.iframe嵌入SVG
+            <iframe src="triangle.svg" width="500" height="500" sandbox>
+                <img src="triangle.png" alt="Triangle with three unequal sides" />
+            </iframe>
+    ```
+17. html中的自适应图片
+    ```
+    1.srcset:包含图像集及其相应的尺寸
+    2.sizes:定义了一组媒体条件(不同的分辨率，显示不同的图片)
+        <img srcset="elva-fairy-320w.jpg 320w,
+                     elva-fairy-480w.jpg 480w,
+                     elva-fairy-800w.jpg 800w"
+             sizes="(max-width: 320px) 280px,
+                    (max-width: 480px) 440px,
+                    800px"
+             src="elva-fairy-800w.jpg" alt="Elva dressed as a fairy">
+    3.也可使用picture(sizes用于设置分辨率和media用于设置媒体尺寸)
+        <picture>
+          <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg">
+          <source media="(min-width: 800px)" srcset="elva-800w.jpg">
+          <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva">
+        </picture>
+    4.加载新的图片格式
+        <picture>
+          <source type="image/svg+xml" srcset="pyramid.svg">
+          <source type="image/webp" srcset="pyramid.webp"> 
+          <img src="pyramid.png" alt="regular pyramid built from four equilateral triangles">
+        </picture>
+    ```
+18. html表格  [实例](../demo06.html)
+19. html表单  
+    ```
+    <form action="url" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" />
+        </div>
+        <div>
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" />
+        </div>
+        <div>
+            <label for="msg">Message:</label>
+            <textarea id="msg"></textarea>
+        </div>
+    </form>
+    ```
         
     
 
