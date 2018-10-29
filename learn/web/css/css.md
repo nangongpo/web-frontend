@@ -90,7 +90,7 @@
 5. 框模型
     ```
     1.框模型结构
-    [](../images/box-model.png)
+    ![](../images/box-model.png)
     
     
         
