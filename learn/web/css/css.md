@@ -88,6 +88,7 @@
             revert: 若当前节点设置样式，就保持原来的值
     ```
 5. 框模型
+    ![](../images/box-model.png)
     ```
     1.框模型结构
     ![](../images/box-model.png)
