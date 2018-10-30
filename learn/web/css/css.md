@@ -169,9 +169,13 @@
               list-style: square url(example.png) inside;
             }
     2.管理列表的计数
-        
+       1. start: 项目的编号
+       2. reversed: 将项目编号翻转
+       3. value: 设置列表项指定数值
     ```
-11. 
+11. 链接的CSS样式 [demo06.html](./demo06.html)
+    
+    
     
 
             
