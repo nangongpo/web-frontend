@@ -118,4 +118,71 @@
 7. CSS的调试
     - 调试前：[demo03-before.html](./demo03-before.html)
     - 调试后：[demo03-after.html](./demo03-after.html)
-8. 
+8. CSS的项目 [demo04.html](./demo04.html)   
+9. 样式化字体   
+    ```
+    1.用于样式文本的CSS属性分为两类
+        字体样式：字体的种类、颜色和大小
+            p {
+              font-size: 12px;
+              color: red;
+              
+            }
+        文本布局风格：文本的对齐方式、行高、字间距
+    2.CSS改变文本样式的常用属性
+        (1) font-style: normal/italic/oblique
+        (2) font-variant: 在小型大写字母和普通文本之间切换
+        (3) font-weight: normal/bold/lighter/bloder
+        (4) font-stretch: 在给定字体的可选拉伸版本中切换
+        (5) font-size: 12px;
+        (6) font-family: Helvetica, Arial, sans-serif;
+        (7) text-transform: none/uppercase/lowercase/capitalize/full-width
+        (8) text-decoration: none/underline/overline/line-through
+        (9) text-shadow: 水平偏移 垂直偏移 模糊半径 阴影颜色
+    3.CSS文本布局的常用样式
+        (1) text-align: left/right/center/justify
+        (2) line-height: 无单位的值乘以 font-size 来获得 line-height
+        (3) letter-spacing: 字母之间的间距
+        (4) word-spacing: 单词之间的间距
+        (5) text-indent: 首行缩进
+        (6) text-overflow: 如何处理被隐藏的溢出内容
+        (7) white-space: 处理元素内部的空白和换行
+        (8) word-wrap: 单词换行
+        (9) writing-mode: 定义文本行布局为水平还是垂直
+    4.设置字体属性的简写 (文本样式1-6的简写)
+        font: italic normal blod normal 3em/1.5 Helvetica, Arial, sans-serif;
+    ```
+10. 列表的CSS样式 [demo05.html](./demo05.html)
+    ```
+    1. ul或ol元素的三个属性
+        list-style-type: 设置列表的项目符号的类型
+        list-style-position: 项目符号出现的位置
+        list-style-image: 引用自定义的项目符号图片
+        实例如下：
+            ul {
+              list-style-type: square;
+              list-style-image: url(example.png);
+              list-style-position: inside;
+            }
+        简写为
+            ul {
+              list-style: square url(example.png) inside;
+            }
+    2.管理列表的计数
+        
+    ```
+11. 
+    
+
+            
+            
+    
+    
+    
+        
+            
+    
+    
+        
+    
+    
