@@ -166,7 +166,7 @@
     (6) 标记时间和日期 
         <time datetime="2018-10-26T08:30:03GMT" pubdate="pubdate">2018-10-26</time>
     ```
-13. html网站架构及相关的语义化标签 -- [实例](../demo02.html)
+13. html网站架构及相关的语义化标签 -- [实例](./demo02.html)
     ```
     1. 标题 <header>
     2. 导航 <nav>
@@ -174,7 +174,7 @@
     4. 侧栏 <aside>
     5. 页脚 <footer>
     ```   
-14. 多媒体与嵌入 -- [实例](../demo04.html)
+14. 多媒体与嵌入 -- [实例](./demo04.html)
     ```
     1.图片 img
       (1)替换元素(img、video):元素的内容和尺寸由外部资源所定义，而不是元素本身
@@ -292,7 +292,7 @@
           <img src="pyramid.png" alt="regular pyramid built from four equilateral triangles">
         </picture>
     ```
-18. html表格  [实例](../demo06.html)
+18. html表格  [实例](./demo06.html)
 19. html表单  
     ```
     <form action="url" method="post">
