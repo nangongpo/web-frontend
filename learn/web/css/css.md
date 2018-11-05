@@ -152,7 +152,16 @@
     4.设置字体属性的简写 (文本样式1-6的简写)
         font: italic normal blod normal 3em/1.5 Helvetica, Arial, sans-serif;
     ```
-10. 列表的CSS样式 [demo05.html](./demo05.html)
+10. 字体种类    
+    | 字体名称 | 字体种类 | 注意 |
+    | :------- | :------- | :--- |
+    |   Arial  | sans-serif | Helvetica作为 Arial 的首选替代品 |
+    | Courier New | monospace | 使用Courier New作为Courier的首选替代方案 |
+    | Georgia | serif |     |
+    | Times New Roman | serif | 使用Times作为Times New Roman的首选替代方案 |
+    | Trebuchet MS | sans-serif | 在移动操作系统上并不广泛 |
+    | Verdana | sans-serif |   |
+11. 列表的CSS样式 [demo05.html](./demo05.html)
     ```
     1. ul或ol元素的三个属性
         list-style-type: 设置列表的项目符号的类型
@@ -173,7 +182,7 @@
        2. reversed: 将项目编号翻转
        3. value: 设置列表项指定数值
     ```
-11. 链接的CSS样式 [demo06.html](./demo06.html)
+12. 链接的CSS样式 [demo06.html](./demo06.html)
     
     
     
