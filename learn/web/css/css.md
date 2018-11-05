@@ -153,6 +153,7 @@
         font: italic normal blod normal 3em/1.5 Helvetica, Arial, sans-serif;
     ```
 10. 字体种类    
+    
     | 字体名称 | 字体种类 | 注意 |  
     | :------- | :------- | :--- |  
     |   Arial  | sans-serif | Helvetica作为 Arial 的首选替代品 |    
@@ -161,7 +162,7 @@
     | Times New Roman | serif | 使用Times作为Times New Roman的首选替代方案 |    
     | Trebuchet MS | sans-serif | 在移动操作系统上并不广泛 |    
     | Verdana | sans-serif |   |    
-       
+
 11. 列表的CSS样式 [demo05.html](./demo05.html)
     ```
     1. ul或ol元素的三个属性
