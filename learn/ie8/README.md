@@ -1,6 +1,6 @@
 ## IE8对于CSS2.1是完整支持的，对于CSS3则只是部分支持。下文中只列出IE8完全支持及完全不支持的样式。
 
-==注：下文中的E、F均指html标签名，如div，img等。==
+`注：下文中的E、F均指html标签名，如div，img等。`
 
 1. At-rules At类规则
     ```
@@ -25,12 +25,12 @@
     5. Pseudo-elements 伪元素
     支持：:after, :before, :first-letter, :first-line
     ```
-7. Properties 属性  ==支持：!important==
+7. Properties 属性  `支持：!important`
 
 8. 2-D and 3-D Transforms 2D、3D效果    
-    ==不支持==：transform全系列, perspective全系列, backface-visibility
+    `不支持：transform全系列, perspective全系列, backface-visibility`
 
-9. Animations 动画  ==不支持：animation全系列==
+9. Animations 动画  `不支持：animation全系列`
 
 10. Border and Layout 边框和布局
     ```
@@ -48,7 +48,7 @@
     ```
     支持：content, counter-increment, counter-reset, quotes
     ```
-14. Lists 列表  ==支持：list-style全系列==
+14. Lists 列表  `支持：list-style全系列`
 
 15. Positioning 定位
     ```
@@ -58,15 +58,15 @@
     ```
     支持：orphans, page-break-after, page-break-before, page-break-inside, widows
     ```
-17. Transitions 平滑渐变/过渡 ==不支持：transition全系列==
+17. Transitions 平滑渐变/过渡   `不支持：transition全系列`
 
 18. User Interface 用户界面
     ```
     支持：cursor, outline, outline-color, outline-style, outline-width
     ```
-19. Speech 朗读 ==不支持==
+19. Speech 朗读 `不支持`
 
-20. Media Queries 媒体查询  ==不支持==
+20. Media Queries 媒体查询  `不支持`
 
 21. Values 值
     ```
