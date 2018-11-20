@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS 布局</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ddd;
+        }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .nav {
+            width: 400px;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav li {
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            list-style: none;
+            font-size: 18px;
+            margin: 2px 2px;
+            background-color: white;
+            float: left;
+        }
+        .content {
+            width: 100%;
+            height: 500px;
+            background-color: blanchedalmond;
+            position: relative;
+        }
+        .content dl {
+            position: relative;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        .content dl dt {
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+        .content dl dd {
+            border: 1px solid blue;
+            box-sizing: border-box;
+        }
+        .content dl:nth-child(3) dd {
+            position: absolute;
+        }
+        .content dl:last-child {
+            width: 960px;
+            position: absolute;
+            top: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CSS 布局</h1>
+        <ul class="nav">
+            <li><a href="#static">静态定位</a></li>
+            <li><a href="#relative">相对定位</a></li>
+            <li><a href="#absolute">绝对定位</a></li>
+            <li><a href="#fixed">固定定位</a></li>
+        </ul>
+        <div class="content">
+            <dl>
+                <dt>静态定位</dt>
+                <dd>是每个元素默认的属性——它表示“将元素放在文档布局流的默认位置——没有什么特殊的地方”</dd>
+            </dl>
+            <dl>
+                <dt>相对定位</dt>
+                <dd>允许我们相对元素在正常的文档流中的位置移动它——包括将两个元素叠放在页面上。这对于微调和精准设计(design pinpointing)非常有用</dd>
+            </dl>
+            <dl>
+                <dt>绝对定位</dt>
+                <dd>将元素完全从页面的正常布局流中移出，类似将它单独放在一个图层中. 我们可以将元素相对于页面的 &lt;html&gt; 元素边缘固定，或者相对于离元素最近的被定位的祖先元素(ancestor element)。绝对定位在创建复杂布局效果时非常有用，例如通过标签显示和隐藏的内容面板或者通过按钮控制滑动到屏幕中的信息面板.</dd>
+            </dl>
+            <dl>
+                <dt>固定定位</dt>
+                <dd>与绝对定位非常类似，除了它是将一个元素相对浏览器视口固定，而不是相对另外一个元素。 在创建类似页面滚动总是处于页面上方的导航菜单时非常有用。</dd>
+            </dl>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
+    <script  language="javascript">
+        var nav = document.querySelector('.nav');
+        var nav_li = nav.getElementsByTagName('li');
+        nav.addEventListener('click', function (e) {
+            e.preventDefault();
+            if(e.target.parentNode.nodeName.toLowerCase() == 'li'){
+                var that = e.target.parentNode;
+                var index;
+                for(var i=0; i<nav_li.length; i++) {
+                    if(nav_li[i] == that){ index = i; }  
+                }
+                var dl = document.querySelectorAll(".content>dl")[index];
+                var content = document.querySelectorAll('.content>dl>dd');
+                if(index == 0) { 
+                    alert(content[index].innerHTML);
+                } else if(index == 1) {
+                    alert("相对本身上移40px");
+                    dl.style.top = -40 + 'px';
+                } else if(index == 2) {
+                    alert("相对父元素dl向左移动40px");
+                    dl.lastElementChild.style.left = -40 + 'px';
+                } else if(index == 3) {
+                    alert("相对位置不变");
+                    dl.style.position = 'fixed';
+                }
+            }
+        });
+        // 去掉alert域名标题
+        function alert(name) {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display="none";
+            iframe.setAttribute("src", 'data:text/plain');
+            document.documentElement.appendChild(iframe);
+            window.frames[0].window.alert(name);
+            iframe.parentNode.removeChild(iframe);
+        }
+    </script>
+</body>
+
+</html>

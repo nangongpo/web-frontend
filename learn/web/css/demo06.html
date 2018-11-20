@@ -31,6 +31,7 @@
             text-align: center;
             line-height: 3;
             color: black;
+            cursor: pointer;  /* 还有 help wait move crosshair not-allowed zoom-in grab*/
         }
 
         li:last-child a {
@@ -51,6 +52,13 @@
             background: gray;
             color: white;
         }
+        a[href*="http"] {
+            background: gray url('https://mdn.mozillademos.org/files/12982/external-link-52.png') no-repeat 80% 50%;
+            background-size: 16px 16px;
+            width: 25%;
+            text-align: center;
+            line-height: 3;
+        }
     </style>
 </head>
 
@@ -61,6 +69,9 @@
         <li><a href="#">音乐</a></li>
         <li><a href="#">关于</a></li>
     </ul>
+    <div>
+        <p>详情：<a href="http://www.baidu.com">百度一下</a></p>
+    </div>
 </body>
 
 </html>

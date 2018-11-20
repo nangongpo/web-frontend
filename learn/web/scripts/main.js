@@ -21,11 +21,19 @@ function multiply(num1, num2) {
     return num3;
 }
 
-document.querySelector('section').addEventListener('copy',function(){
-    alert('请登录后操作');
+// document.querySelector('section').addEventListener('copy',function(){
+//     alert('请登录后操作');
+//     return false;
+// });
+//禁止复制
+document.querySelector('section').oncontextmenu=function(e){
+    e.preventDefault();
     return false;
-});
- 
+}
+document.querySelector('section').onselectstart=function(e){
+    e.preventDefault();
+    return false;
+};
 var myImage = document.querySelector('img.img1');
 myImage.onclick = function() {
     var mySrc = myImage.getAttribute('src');

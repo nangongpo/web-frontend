@@ -185,7 +185,55 @@
        3. value: 设置列表项指定数值
     ```
 12. 链接的CSS样式 [demo06.html](./demo06.html)
-    
+13. 表格的CSS样式 [demo07.html](./demo07.html)
+14. 阴影 [demo08.html](./demo08.html)
+    ```
+    1. 盒子阴影 box-shadow: 水平偏移(必需) 垂直偏移(必需) 模糊半径 阴影尺寸 阴影颜色 阴影出现的位置
+        box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7) inset;
+    2. 过滤器 filters
+        filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.7));
+    3. 混合模式 Blend modes (兼容性很差)
+        1. background-blend-mode, 用来将单个元素的多重背景图片和背景颜色设置混合在一起
+        2. mix-blend-mode, 用来将一个元素与它覆盖的那些元素各自所设置的背景（background）和内容(content)混合在一起。
+    ```
+15. css排版 [demo09.html](./demo09.html)
+    ```
+    1. 浮动float  left/right/none/inherit
+    2. 定位技术 
+        静态定位(static)： 默认位置
+        相对定位(relative)： 相对默认位置移动，用于微调和精准设计
+        绝对定位(absolute)： 脱离文档流 (以被定位的父元素为基准)
+        固定定位(fixed)： 相对浏览器视口固定
+    3. 多列布局(multicol)
+        .container{
+            column-count: 3;
+            column-width: 200px;
+        }
+    4. 网格系统
+        1.固定宽度网格
+            根据容器宽度，计算列宽
+        2.流体网格
+            使用百分比计算出列宽 
+            如固定宽度 960px , 分12份, 每列间隔20px, 则每列固定宽度为60px
+            每列列宽：60/960 = 6.25%;  列间隔： 20/960 = 2.08333333%;
+            .container {
+                width: 960px;
+            }
+            四列列宽： 
+            .col-4 {
+                width: calc((6.25%*4)+ (2.08333333%*3));
+            }
+    5. 弹性布局 flex
+    ``` 
+16. 功能查询：测试浏览器是否支持任何特定的CSS功能
+    ```
+    @supports (display: grid) {
+        .item {
+            width: auto;
+        }
+    }
+    注意：不支持CSS Grid的浏览器，它也不支持功能查询
+    ```
     
     
 

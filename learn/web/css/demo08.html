@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #shadow button {
+            width: 160px;
+            font-size: 18px;
+            line-height: 2;
+            border-radius: 10px;
+            border: none;
+            outline-color: #fff;
+            background-image: linear-gradient(to bottom right, #777, #ddd);
+            box-shadow: 1px 1px 1px black,
+                inset 2px 3px 5px rgba(0, 0, 0, 0.3),
+                inset -2px -3px 5px rgba(255, 255, 255, 0.5);
+        }
+        #shadow button:focus, #shadow button:hover {
+            background-image: linear-gradient(to bottom right, #888, #eee);
+        }
+        #shadow button:active {
+            box-shadow: inset 2px 2px 1px black,
+                inset 2px 3px 5px rgba(0, 0, 0, 0.3),
+                inset -2px -3px 5px rgba(255, 255, 255, 0.5);
+        }
+        #filter p {
+            margin: 10px auto;
+            padding: 20px;
+            width: 200px;
+            border: 1px dashed red;
+        }
+        #filter .filter {
+            -webkit-filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.7));
+        }
+        #filter .box-shadow {
+            box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="top">盒子阴影box-shadow</h1>
+    <h1><a href="#filter">过滤器filters</a></h1>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, alias dolor. 
+            Sapiente, illo maiores? Commodi, voluptatibus, tenetur sequi nam magni doloremque 
+            dolores aliquid quia nisi, saepe pariatur quae deleniti consequuntur?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, alias dolor. 
+                Sapiente, illo maiores? Commodi, voluptatibus, tenetur sequi nam magni doloremque 
+                dolores aliquid quia nisi, saepe pariatur quae deleniti consequuntur?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, alias dolor. 
+                Sapiente, illo maiores? Commodi, voluptatibus, tenetur sequi nam magni doloremque 
+                dolores aliquid quia nisi, saepe pariatur quae deleniti consequuntur?</p>
+    </div>
+    <div id="filter">
+        <p class="filter">Filter</p>
+        <p class="box-shadow">Box shadow</p>
+    </div>
+    <div id="shadow">
+        <a href="#top"><button>to Top!</button></a>
+    </div>
+</body>
+
+</html>

@@ -10,6 +10,18 @@ body {
     padding: 0 20px 20px 20px;
     border: 5px solid black;
 }
+/* section 禁止复制 */
+section {
+    -moz-user-select: -moz-none;  
+    -khtml-user-select: none;  
+    -webkit-user-select: none;  
+    /*  
+      Introduced in IE 10.  
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/  
+    */  
+    -ms-user-select: none;  
+    user-select: none;
+}
 h1 {
     margin: 0;
     padding: 20px 0;
