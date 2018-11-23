@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜数字游戏</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        ul {
+            list-style-type: unset;
+        }
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            background-color: bisque;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        .col {
+            width: 8.3%;
+            margin: 0 10px;
+        }
+        .col-6 {
+            width: calc((8.3%*6));
+        }
+        .blockquote {
+            border-left: 10px solid #999;
+            visibility: hidden;
+        }
+        .programming {
+            font-size: 20px;
+            font-weight: 200;
+            color: yellowgreen;
+            cursor: pointer;
+        }
+        .lastResult {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <div class="container">
+            <div class="row">
+                <div class="col col-6">
+                    <h1>猜数字游戏<span class="programming">编程思维</span></h1>
+                    <p>我刚才随机选定了一个100以内的自然数。看你能否在10轮以内猜中它。每次我都会告诉你所猜的结果是高了还是低了。</p>
+                    <div class="form">
+                        <label for="guessField">请猜数: </label>
+                        <input type="text" id="guessField" class="guessField">
+                        <input type="submit" value="确定" class="guessSubmit">
+                    </div>
+                
+                    <div class="resultShow">
+                        <p class="guesses"></p>
+                        <p class="lastResult"></p>
+                        <p class="lowOrHi"></p>
+                    </div>
+                </div>
+                <div class="col col-6">
+                    <div class="blockquote">
+                        <ol>
+                            <li>随机生成一个 100 以内的自然数。</li>
+                            <li>记录玩家当前的轮数。从 1 开始。</li>
+                            <li>为玩家提供一种猜测数字的方法。</li>
+                            <li>一旦有结果提交，先将其记录下来，以便用户可以看到他们先前的猜测。</li>
+                            <li>然后检查它是否正确。</li>
+                            <li>如果正确：
+                                <ul>
+                                    <li>显示祝贺消息。</li>
+                                    <li>阻止玩家继续猜测（这会使游戏混乱)。</li>
+                                    <li>显示控件允许玩家重新开始游戏。</li>
+                                </ul>
+                            </li>
+                            <li>如果出错，并且玩家有剩余轮次：
+                                <ul>
+                                    <li>告诉玩家他们错了。</li>
+                                    <li>允许他们输入另一个猜测。</li>
+                                    <li>轮数加 1。</li>
+                                </ul>
+                            </li>
+                            <li>如果出错，并且玩家没有剩余轮次：
+                                <ul>
+                                    <li>告诉玩家游戏结束。</li>
+                                    <li>阻止玩家继续猜测（这会使游戏混乱）。</li>
+                                    <li>显示控件允许玩家重新开始游戏。</li>
+                                </ul>
+                            </li>
+                            <li>一旦游戏重启，确保游戏的逻辑和UI完全重置，然后返回步骤1。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <script>
+        // 声明变量
+        var number = Math.floor(Math.random()* 100) + 1;
+        
+        var programming = document.querySelector('.programming');
+        var blockquote = document.querySelector('.blockquote');
+
+        var guesses = document.querySelector('.guesses');
+        var lastResult = document.querySelector('.lastResult');
+        var lowOrHi = document.querySelector('.lowOrHi');
+
+        var guessSubmit = document.querySelector('.guessSubmit');
+        var guessField = document.querySelector('.guessField');
+        
+        var guessCount = 1; //记录提交次数
+        var resetButton;
+
+        // 查看编程思维
+        var clickNum = 0;
+        var content = blockquote.innerHTML; // 需要切换的内容
+        var code = document.querySelector('.code').innerHTML;
+        console.log(code);
+        var changeNum = 0;  // 如何使奇数的话不变，偶数的话显示源代码
+        programming.addEventListener('click', function() {
+            if (clickNum % 2 === 0) {
+                if (changeNum & 1 === 1) {   //数奇数的话不变
+                    blockquote.innerHTML = content;
+                } else {
+                    blockquote.innerHTML = '<h1>自己动手操作吧</h1>';
+                }
+                changeNum++;
+                blockquote.style.visibility = 'visible'; 
+            } else {
+                blockquote.style.visibility = 'hidden';
+            }
+            clickNum++; 
+        });
+
+        // 监听checkGuess方法
+        guessSubmit.addEventListener('click', checkGuess);
+        
+        function checkGuess() {
+            var guessNum = Number(guessField.value);
+            if (guessCount === 1) {
+                guesses.textContent = '上次猜的数值: ';
+            }
+            guesses.textContent += guessNum + ' ';
+            if (guessNum === number) {
+                lastResult.textContent = '恭喜你猜对了！';
+                lastResult.style.backgroundColor = 'green';
+                lowOrHi.textContent = '';
+                setGameOver();
+            } else if (guessCount === 10) {
+                lastResult.textContent = '!!!GAME OVER!!!';
+                setGameOver();
+            } else {
+                lastResult.textContent = '你猜错了！';
+                lastResult.style.backgroundColor = 'red';
+                if (guessNum < number) {
+                    lowOrHi.textContent = '你猜低了！';
+                } else if (guessNum > number) {
+                    lowOrHi.textContent = '你猜高了！';
+                }
+            }
+            guessCount++;
+            guessField.value = '';
+            guessField.focus();
+        }
+
+        function setGameOver() {
+            guessField.disabled = true;
+            guessSubmit.disabled = true;
+            resetButton = document.createElement('button');
+            resetButton.textContent = '开始新游戏';
+            document.body.appendChild(resetButton);
+            resetButton.addEventListener('click', resetGame);
+        }
+
+        function resetGame() {
+            guessCount = 1;
+            var resetResult = document.querySelectorAll('.resultShow p');
+            for (var i=0; i<resetResult.length; i++) {
+                resetResult[i].textContent = '';
+            }
+
+            resetButton.parentNode.removeChild(resetButton);
+            guessField.disabled = false;
+            guessSubmit.disabled = false;
+            guessField.value = '';
+            guessField.focus();
+
+            lastResult.style.backgroundColor = 'white';
+
+            number = Math.floor(Math.random() * 100) + 1;
+        }
+    </script>
+    
+</body>
+</html>
