@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>显示前五个搜索</h1>
+    <input type="text" id="inputText">
+    <button class="search">search</button>
+    <ul id="content"></ul>
+    <script>
+        var inputText = document.getElementById('inputText');
+        var searchBtn = document.querySelector('.search');
+        var list = document.getElementById('content');
+        list.innerHTML = '';
+        var myHistory = [];
+        searchBtn.onclick = function () {
+            if (inputText.value !== '') {
+                myHistory.unshift(inputText.value);
+                list.innerHTML = '';
+                for (var i=0; i<myHistory.length; i++) {
+                    item = myHistory[i];
+                    var listItem = document.createElement('li');
+                    listItem.textContent = item;
+                    list.appendChild(listItem);
+                }
+                if (myHistory.length >= 5) {
+                    myHistory.pop();
+                }
+                inputText.value = '';
+                inputText.focus();
+            }
+        }
+    </script>
+</body>
+</html>

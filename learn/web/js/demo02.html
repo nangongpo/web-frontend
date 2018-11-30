@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>运算符的使用</h1>
+    <button>开始工作</button>
+    <p>结束工作</p>
+    <script>
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('p');
+
+        btn.addEventListener('click', update);
+
+        function update() {
+            if (btn.textContent === '开始工作') {
+                btn.textContent = '结束工作';
+                txt.textContent = '开始工作';
+            } else {
+                btn.textContent = '开始工作';
+                txt.textContent = '结束工作';
+            }
+        }
+    </script>
+</body>
+</html>
