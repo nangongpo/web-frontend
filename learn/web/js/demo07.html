@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        arr1=[
+            {key:'123',name:'li'},
+            {key:'234',name:'ji'},
+            {key:'345',name:'sheng'}
+        ]
+        arr2=[
+            {key:'123',name:'li'},
+            {key:'234',name:'ji'},
+            {key:'345',name:'sheng'},
+            {key:'456',name:'zhang'},
+            {key:'567',name:'wang'}
+        ]
+        // 比较两个数组中的key, 将少的数组补全
+        function compare(arr1,arr2) {
+            var more = arr1.length < arr2.length ? arr2 : arr1;
+            var less = arr1.length < arr2.length ? arr1 : arr2;
+            var arr3 = more.filter(function(item) {
+                for (var demo of less) {
+                    if (item.key === demo.key) {
+                        return false;
+                    } 
+                }
+                return true;
+            })
+            for (var i of arr3) {
+                less.push(i);
+            }
+            return less;
+        }
+        var arr1 = compare(arr1, arr2);
+        console.log(arr1);
+    </script>
+</body>
+</html>
