@@ -41,14 +41,14 @@
         2. 变量名不要以数字开头
         3. 变量名大小写敏感
         4. 避免使用JavaScript的保留字给变量命名, 如var, function, let, for
-        5. 推荐使用 小驼峰命名法, 如 myAge
+        5. 推荐使用 小驼峰命名法, 如 myAge
        ```
     3. javascript中数字类型和运算符
         1. 数字类型
             ```
             1. 十进制
                 ① 整数
-                ② 浮点数 32位 占4个字节  有效数字8位 表示范围：-3.40E+3 ~ +3.40E+38
+                ② 浮点数 32位 占4个字节  有效数字8位 表示范围：-3.40E+3 ~ +3.40E+38
                 ③ 双精度 64位 占8个字节  有效数字16位 表示范围：-1.79E+308 ~ +1.79E+308
             2. 二进制 0和1
             3. 八进制 0-7
@@ -96,9 +96,9 @@
         | :--: | :----: |
         | \\' | 单引号 |
         | \\" | 双引号 |
-        | \\& | 和号 |
+        | \\& | 和号 |
         | \\\\ | 反斜杠 |
-        | \n | 换行符 |
+        | \n | 换行符 |
         | \r | 回车符 |
         | \v | 垂直制表符 |
         | \t | 水平制表符 |
@@ -119,7 +119,7 @@
         4. 截取字符串
             str.slice(0,3) = 'Hel';
             str.slice(2) = 'llo';
-        5. 改变字符串的格式
+        5. 改变字符串的格式
             str.toLowerCase() = 'hello';
             str.toUpperCase() = 'HELLO';
         6. 更新字符串部分内容
@@ -158,9 +158,9 @@
             ③ unshift() // 在数组的开始添加
                 var cityList = ['上海', '广州', '深圳'];
                 cityList.unshift('北京'); // 4
-                cityList // ['北京', '上海', '广州', '深圳']
+                cityList // ['北京', '上海', '广州', '深圳']
             ④ shift() // 在数组的开始删除
-                var cityList = ['北京', '上海', '广州', '深圳'];
+                var cityList = ['北京', '上海', '广州', '深圳'];
                 cityList.shift(); // '北京'
                 cityList // ['上海', '广州', '深圳']
         ``` 
@@ -223,9 +223,9 @@
         | Math.max(x,y) | 返回x和y中的最大值 |
         | Math.min(x,y) | 返回x和y中的最小值 |
         | Math.random() | 返回 0~1 之间的随机数 |
-        | Math.round(x) | 把数四舍五入为最接近的整数 | 
+        | Math.round(x) | 把数四舍五入为最接近的整数 | 
 
-    10. 函数
+    10. 函数
         ```
         1. 自定义函数
             function random(number) {
@@ -237,6 +237,7 @@
                 alert('hello');
             }
         4. 调用匿名函数
+            ```
             1. 赋值给变量调用
                 var hello = function() {
                     alert('hello');
@@ -250,6 +251,8 @@
                 myButton.onclick = function() {
                     alert('hello');
                 }
+            ``` 
+
         5. 函数参数
             function add(num1, num2) {
                 return num1+num2;
@@ -278,7 +281,7 @@
         3. 阻止默认行为  
             <span style="color: red;">e.preventDefault();</span>
         4. 事件冒泡及捕获   
-            ① 事件的捕获  
+            ① 事件的捕获  
 
                 浏览器检查元素的最外层祖先<html>,是否注册了onclick事件，如果是，则运行它。
                 然后移动到<html>中的下一个元素，并执行相同的操作，直至到达实际点击的元素。
@@ -289,7 +292,7 @@
                 <span style="color: red;">e.stopPropagation();</span>
         5. 事件委托 (利用冒泡) [demo06.html](demo06.html)
     12. 对象 —— 包含相关数据和方法的集合
-        1. 对象的定义
+        1. 对象的定义
             ```
             var person = {
                 name : ['Bob', 'Smith'],
@@ -306,7 +309,7 @@
             person对象由 4个属性和2个方法 构成
             ``` 
 
-        2. 获取对象属性值的两种方法
+        2. 获取对象属性值的两种方法
             ```
             点表示法
                 person.age
@@ -341,7 +344,7 @@
             ```
             var person1 = new Object();
             ``` 
-            
+
             ```
             person1.name = 'Chris';
             person1['age'] = 38;
