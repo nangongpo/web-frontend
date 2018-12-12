@@ -367,8 +367,21 @@
             var person2 = Object.create(person1);
             person2是基于person1创建的
             ```
+    14. 理解JavaScript中的原型
+        1. 原型(prototype) —— 每个函数都有一个特殊的属性(可通过浏览器控制台查看函数的__proto__)
+        2. 原型链的理解     
+            ![原型链关系图](../../web/images/原型链关系图)
+            ```
+            // 首先创建一个构造函数
+            function Person(first, last, age, gender, interests) {
+                // 属性与方法定义
+            };
+            // 然后创建一个对象实例
+            var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+            //
+            ```
 
-    14. 面向对象编程 OOP(Object Oriented Programming)
+    15. 面向对象编程 OOP(Object Oriented Programming)
         1. 封装的三种形式
             1. 创建对象：将属性和方法封装成一个对象
             2. 创建构造函数：为了解决从原型对象生成实例的问题, 缺点：添加一个不变的属性时，会浪费内存 (验证原型对象与实例对象的关系 instanceof)
@@ -417,8 +430,9 @@
                         this.name = name;
                         this.color = color;
                     }
+
                 2. 让"猫"继承"动物"的方法
-                    ① 构造函数绑定 —— 利用call或者apply方法，将父对象的构造函数绑定在子对象上
+                    ① 构造函数绑定 —— 利用call或者apply方法，将父对象的构造函数绑定在子对象上(父对象改变，对子对象没有影响，因为二者的原型对象不一样)
                         function Cat(name,color){
                     　　　　 Animal.call(this, arguments);
                     　　　　 this.name = name;
@@ -434,11 +448,13 @@
                     　　 }
                     　　 var cat1 = new Cat("大毛","黄色");
                     　　 alert(cat1.species); // 动物
+
                     ② prototype模式 —— 将"猫"的prototype对象指向一个Animal的实例，所有"猫"的实例都可以继承Animal
                         Cat.prototype = new Animal(); // 任何一个prototype对象都有一个constructor属性，指向它的构造函数
                     　　 Cat.prototype.constructor = Cat;  // 替换原型对象时，需重新指定原型对象的构造函数，以免导致"继承链"的紊乱
                         var cat1 = new Cat("大毛","黄色");
                     　　 alert(cat1.species); // 动物
+
                     ③ 直接继承prototype —— "猫"直接继承"动物"的原型对象
                         // 先将Animal的species属性放入原型对象中
                     　　 function Animal() { }
@@ -448,6 +464,7 @@
                         Cat.prototype.constructor = Cat; // 缺点是把Animal.prototype对象的constructor属性也改掉了
                         var cat1 = new Cat("大毛","黄色");
                         alert(cat1.species); // 动物 
+
                     ④ 利用空对象作为中介 —— 避免修改Cat的prototype对象时影响到Animal的prototype对象，还可以节省内存
                         var F = function() { };
                         F.prototype = Animal.prototype;
@@ -465,6 +482,7 @@
                         extend(Cat, Animal);
                         var cat1 = new Cat("小黄","黄色");
                         alert(cat1.species); // 动物
+
                     ⑤ 拷贝继承
                         // 先将Animal的species属性放入原型对象中
                     　　 function Animal() { }
@@ -481,7 +499,55 @@
                         // 调用方法
                         extend2(Cat, Animal);
                     　　 var cat1 = new Cat("大毛","黄色");
-                    　　 alert(cat1.species); // 动物
+                    　　 alert(cat1.species); // 动物   
+
+                    ⑥ 利用Object.create(新创建对象的原型对象, 添加到新对象的属性——可选)实现单个对象的继承
+                        // Shape - 父类(superclass)
+                        function Shape() {
+                            this.x = 0;
+                            this.y = 0;
+                        }
+
+                        // 父类的方法
+                        Shape.prototype.move = function(x, y) {
+                            this.x += x;
+                            this.y += y;
+                            console.info('Shape moved.');
+                        };
+
+                        // Rectangle - 子类(subclass)
+                        function Rectangle() {
+                            Shape.call(this); // call super constructor.
+                        }
+
+                        // 子类续承父类
+                        Rectangle.prototype = Object.create(Shape.prototype);
+                        Rectangle.prototype.constructor = Rectangle;
+
+                        var rect = new Rectangle();
+
+                        console.log('Is rect an instance of Rectangle?',
+                        rect instanceof Rectangle); // true
+                        console.log('Is rect an instance of Shape?',
+                        rect instanceof Shape); // true
+                        rect.move(1, 1); // Outputs, 'Shape moved.'
+
+                    ⑦ 利用Object.assign(prototype1, prototype2, ...)实现多个对象的继承
+                        // 先将superClass和OtherSuperClass的方法绑定到MyClass上
+                        function MyClass() {
+                            SuperClass.call(this);
+                            OtherSuperClass.call(this);
+                        }
+                        // 继承一个类
+                        MyClass.prototype = Object.create(SuperClass.prototype);
+                        // 混合其它
+                        Object.assign(MyClass.prototype, OtherSuperClass.prototype);
+                        // 重新指定constructor
+                        MyClass.prototype.constructor = MyClass;
+
+                        MyClass.prototype.myMethod = function() {
+                            // do a thing
+                        };
                 ``` 
 
             2. 非构造函数的继承
@@ -493,6 +559,7 @@
                     var Doctor ={
                 　　　　career:'医生'
                 　　 }
+
                 2. 让"医生"继承"中国人"，即生成一个"中国医生"的对象的方法
                     ① object()
                         // 把子对象的prototype属性指向父对象
@@ -506,6 +573,7 @@
                         // 将子对象本身的属性加入
                         Doctor.career = '医生';
                         alert(Doctor.nation); // 中国
+
                 3. 浅拷贝 —— 拷贝对象类型的数据（早期jQuery实现继承的方式）
                     // 把父对象的属性，全部拷贝给子对象(拷贝数据)
                     function extendCopy(p) {
@@ -520,6 +588,7 @@
                     var Doctor = extendCopy(Chinese);
                 　　 Doctor.career = '医生';
                 　　 alert(Doctor.nation); // 中国
+
                 4. 深拷贝 —— 实现真正意义上的数组和对象的拷贝 （现在jQuery实现继承的方式）
                     // 拷贝 数据及其类型
                     function deepCopy(p, c) {
@@ -557,6 +626,7 @@
                     googleMap.show();
                 };
                 renderMap(); // 输出：开始渲染谷歌地图
+
             2. 同时支持谷歌地图和百度地图
                 var googleMap = {
                     show: function(){
@@ -580,6 +650,7 @@
 
                 renderMap( 'google' ); // 输出：开始渲染谷歌地图
                 renderMap( 'baidu' ); // 输出：开始渲染百度地图
+
             3. 把程序中相同的部分抽象出来，实现多态
                 var renderMap = function( map ){
                     if ( map.show instanceof Function ){
@@ -600,7 +671,9 @@
 
                 renderMap( googleMap ); // 输出：开始渲染谷歌地图
                 renderMap( baiduMap ); // 输出：开始渲染百度地图
-            ```
+            ``` 
+
+    16.   
 
 
             
