@@ -370,7 +370,7 @@
     14. 理解JavaScript中的原型
         1. 原型(prototype) —— 每个函数都有一个特殊的属性(可通过浏览器控制台查看函数的__proto__)
         2. 原型链的理解     
-            ![原型链关系图](../../web/images/原型链关系图)
+            ![原型链关系图](../images/原型链关系图.png)
             ```
             // 首先创建一个构造函数
             function Person(first, last, age, gender, interests) {
