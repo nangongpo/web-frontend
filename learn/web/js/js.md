@@ -237,7 +237,6 @@
                 alert('hello');
             }
         4. 调用匿名函数
-            ```
             1. 赋值给变量调用
                 var hello = function() {
                     alert('hello');
@@ -251,7 +250,6 @@
                 myButton.onclick = function() {
                     alert('hello');
                 }
-            ``` 
 
         5. 函数参数
             function add(num1, num2) {
