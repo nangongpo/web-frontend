@@ -126,7 +126,7 @@
             str.replace('ello', 'i') = 'Hi';
         ``` 
 
-    6. 数组的操作 [demo03.html](demo03.html)
+    6. 数组的操作 [demo03.html](demo03.html) 和 [demo07.html](demo07.html)
         ```
         1. 数组
             var shopping = ['面包', '牛奶', '烤肠'];
@@ -324,7 +324,13 @@
             添加新的属性
                 person.height = '170cm'
                 person['height'] = '170cm'
-            ```     
+            ```  
+        
+        4. 将对象转换成数组的方法 Object.keys(obj)
+           ```
+           var obj = { 0: 'a', 1: 'b', 2: 'c' };
+           console.log(Object.keys(obj)); // ['0', '1', '2']
+           ```
 
     13. 构造函数(类)的创建实例化对象的方法  
         1.  创建构造函数，通过new 实例化对象
@@ -378,7 +384,26 @@
             };
             // 然后创建一个对象实例
             var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
-            //
+            // 调用person1实例中的valueOf(),浏览器会执行什么操作？
+            person1.valueOf()  —— valueOf()方法会返回 Boolean 对象的原始值
+
+            浏览器通过原型链的方式查找valueOf()方法，都没有的话，返回undefined。
+                ① 浏览器首先检查，person1 对象是否具有可用的 valueOf() 方法。
+                ② 如果没有，则浏览器检查 person1 对象的原型对象（即 Person构造函数的prototype属性所指向的对象）是否具有可用的 valueof() 方法。
+                ③ 如果也没有，则浏览器检查 Person() 构造函数的prototype属性所指向的对象的原型对象（即 Object构造函数的prototype属性所指向的对象）是否具有可用的 valueOf() 方法。这里有这个方法，于是该方法被调用。
+            ``` 
+
+        3. 修改原型
+            ```
+            // 构造器及其属性定义
+            function Test(a,b,c,d) {
+            // 属性定义
+            };
+            // 定义第一个方法
+            Test.prototype.x = function () { ... }
+            // 定义第二个方法
+            Test.prototype.y = function () { ... }
+            // 等等……
             ```
 
     15. 面向对象编程 OOP(Object Oriented Programming)
@@ -673,7 +698,164 @@
                 renderMap( baiduMap ); // 输出：开始渲染百度地图
             ``` 
 
-    16.   
+    16. JSON —— 一种按照JavaScript对象语法的数据格式
+        ```
+        1. JSON作为一个对象时，用于解读JSON中的数据；JSON作为一个字符串时，用于网络传输JSON数据
+
+        2. JSON对象的媒体类型(MIME type) —— application/json
+        
+        3. JSON结构
+            ① JSON对象 —— 基于js的对象
+                {
+                    "squadName" : "Super hero squad",
+                    "homeTown" : "Metro City",
+                    "formed" : 2016,
+                    "secretBase" : "Super tower",
+                    "active" : true,
+                    "members" : [
+                        {
+                            "name" : "Molecule Man",
+                            "age" : 29,
+                            "secretIdentity" : "Dan Jukes",
+                            "powers" : [
+                                "Radiation resistance",
+                                "Turning tiny",
+                                "Radiation blast"
+                            ]
+                        },
+                        {
+                            "name" : "Madame Uppercut",
+                            "age" : 39,
+                            "secretIdentity" : "Jane Wilson",
+                            "powers" : [
+                                "Million tonne punch",
+                                "Damage resistance",
+                                "Superhuman reflexes"
+                            ]
+                        }
+                    ]
+                }
+            ② JSON数组 —— 基于js的数组
+                [
+                    {
+                        "name" : "Molecule Man",
+                        "age" : 29,
+                        "secretIdentity" : "Dan Jukes",
+                        "powers" : [
+                        "Radiation resistance",
+                        "Turning tiny",
+                        "Radiation blast"
+                        ]
+                    },
+                    {
+                        "name" : "Madame Uppercut",
+                        "age" : 39,
+                        "secretIdentity" : "Jane Wilson",
+                        "powers" : [
+                        "Million tonne punch",
+                        "Damage resistance",
+                        "Superhuman reflexes"
+                        ]
+                    }
+                ]
+            ③ 注意事项
+                (1) JSON 是一种纯数据格式，它只包含属性，没有方法。
+                (2) JSON 要求有两头的 { } 来使其合法。最安全的写法是有两边的括号，而不是一边。
+                (3) 甚至一个错位的逗号或分号就可以导致  JSON 文件出错。您应该小心的检查您想使用的数据(虽然计算机生成的 JSON 很少出错，只要生成程序正常工作)。您可以通过像 JSONLint 的应用程序来检验 JSON。
+                (4) JSON 可以将任何标准合法的 JSON 数据格式化保存，不只是数组和对象。比如，一个单一的字符串或者数字可以是合法的 JSON 对象。虽然不是特别有用处……
+                (5) 不像 JavaScript 标识符可以用作属性，在 JSON 中，只有字符串才能用作属性。
+        4. 对象和文本间的转换
+            JSON.parse() —— 以文本字符串形式接受JSON对象作为参数，并返回相应的对象
+            JSON.stringify() —— 接收一个对象作为参数，返回一个对应的JSON字符串
+        ``` 
+
+    17. 操作实例 —— [弹球](demo08.html)
+        小球会在屏幕上弹跳，当它们碰到彼此时会变色
+    
+    18. Web API
+        1. 客户端JavaScript中的API
+            ```
+            1. 浏览器API内置于Web浏览器中，能从浏览器和电脑周边环境中提取数据，并用来做有用的复杂的事情
+            2. 第三方API缺省情况下不会内置于浏览器中，通常必须在Web中的某个地方获取代码和信息
+            ``` 
+
+        2. JavaScript，API和其他JavaScript工具之间的关系
+            ```
+            1. JavaScript —— 一种内置于浏览器的高级脚本语言，您可以用来实现Web页面/应用中的功能
+            2. 客户端API — 内置于浏览器的结构程序，位于JavaScript语言顶部，使您可以更容易的实现功能
+            3. 第三方API — 置于第三方普通的结构程序（例如Twitter，Facebook)，使您可以在自己的Web页面中使用那些平台的某些功能
+            4. JavaScript库 — 通常是包含具有特定功能的一个或多个JavaScript文件，把这些文件关联到您的Web页以快速或授权编写常见的功能。例如包含jQuery和Mootools
+            5. JavaScript框架 — 从库开始的下一步，JavaScript框架视图把HTML、CSS、JavaScript和其他安装的技术打包在一起，然后用来从头编写一个完整的Web应用
+            ``` 
+
+        3. 常见的浏览器API
+            ```
+            1. 操作文档的API —— DOM
+            2. 从服务器获取数据的API —— XMLHttpRequest 和 Fetch API
+            3. 用于绘制和操作图形的API —— Canvas(2D) 、 WebGL(3D) 和 创建动画循环的API —— requestAnimationFrame()
+            4. 音频和视频API —— HTMLMediaElement，Web Audio API和WebRTC
+            5. 设备API —— 地理定位API 、系统通知 Notifications API 和 振动硬件 Vibration API
+            6. 客户端存储API —— 使用Web Storage API的简单的键 - 值存储 和 使用IndexedDB API的更复杂的表格数据存储
+            ``` 
+        
+        4. API的工作原理  
+            1. 它们是基于对象的, 如[Geolocation API](demo09.html) 包含三个对象：
+                ```
+                ① Geolocation, 其中包含三种控制地理数据检索的方法。
+                ② Position, 表示在给定的时间的相关设备的位置。
+                ③ Coordinates, 其中包含有关设备位置的大量有用数据，包括经纬度，高度，运动速度和运动方向等
+                ``` 
+
+            2. 它们有可识别的入口点
+                ```
+                ① 在Geolocation API中，它是 Navigator.geolocation 属性, 它返回浏览器的 Geolocation 对象，所有有用的地理定位方法都可用。
+                
+                ② 文档对象模型 (DOM) API，通常挂在 Document 对象
+                    var em = document.createElement('em');
+                    var para = document.querySelector('p'); 
+                    em.textContent = 'Hello there!';
+                    para.appendChild(em);
+
+                ③ 稍微复杂的入口点，需要编写特定的上下文，如Canvas API的上下文对象是通过获取要绘制的 <canvas> 元素的引用来创建的，然后调用它的HTMLCanvasElement.getContext()方法
+                    var canvas = document.querySelector('canvas');
+                    var ctx = canvas.getContext('2d');
+                ``` 
+            
+            3. 它们使用事件来处理状态的变化, 如从服务器获取数据的API —— XMLHttpRequest
+                ```
+                var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+                var request = new XMLHttpRequest();
+                request.open('GET', requestURL);
+                request.responseType = 'json';
+                request.send();
+                // 成功响应后执行onload
+                request.onload = function() {
+                    var superHeroes = request.response;
+                    console.log(superHeroes);
+                }
+                ``` 
+
+            4. 它们在适当的地方有额外的安全机制
+                ```
+                WebAPI功能受到与JavaScript和其他Web技术（例如同源政策）相同的安全考虑 但是他们有时会有额外的安全机制。一旦调用WebAPI请求，用户就可以在您的代码中启用一些WebAPI请求权限。
+                ``` 
+
+        5. web浏览器的重要部分
+            1. 文档对象模型 DOM
+
+            2. 浏览器对象模型 BOM
+
+        6. 从服务器获取数据 —— XMLHttpRequest 和 Fetch API
+
+        7. 画图 —— canvas API 和 WebGL
+
+        8. 视频和音频API —— HTMLMediaElement API (video和audio)
+
+        9. 客户端存储 —— cookies(传统方法)、Web Storage和IndexedDB(新流派) 、Cache API(未来)
+
+    19. 可访问性   
+
+            
 
 
             
