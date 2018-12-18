@@ -37,10 +37,10 @@ document.querySelector('section').onselectstart=function(e){
 var myImage = document.querySelector('img.img1');
 myImage.onclick = function() {
     var mySrc = myImage.getAttribute('src');
-    if(mySrc === 'images/1.jpg') {
-        myImage.setAttribute('src', 'images/2.jpg');
+    if(mySrc === '../images/1.jpg') {
+        myImage.setAttribute('src', '../images/2.jpg');
     } else {
-        myImage.setAttribute('src', 'images/1.jpg');
+        myImage.setAttribute('src', '../images/1.jpg');
     }
 }
 
