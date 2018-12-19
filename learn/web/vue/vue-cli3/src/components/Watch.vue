@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+  name: 'Watch',
   data () {
     return {
       question: '',
@@ -36,7 +37,7 @@ export default {
         _this.answer = '请输入一个包含问号的语句。'
         return
       }
-      _this.answer = '思考中...'
+      _this.answer = '解答中...'
       _this.axios.get('https://yesno.wtf/api')
         .then(function (response) {
           _this.forced = response.data.forced

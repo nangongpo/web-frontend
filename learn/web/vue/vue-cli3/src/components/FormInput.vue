@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-  name: 'FormData',
+  name: 'FormInput',
   data () {
     return {
       msg: 'hello',

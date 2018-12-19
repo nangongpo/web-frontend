@@ -70,12 +70,16 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-  padding: 2px;
-  border-radius: 2px;
-  border: 1px solid #000000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: gray;
+  color: #ffffff;
+  font-weight: bold;
 }
 a {
-  color: #42b983;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bolder;
 }
 .hello {
   width: 960px;
