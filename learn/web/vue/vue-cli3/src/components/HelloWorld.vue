@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div class="main">
+    <button class="button" @click="handleClick">v-show的使用</button>
     <div v-show="show">
       <p>{{ msg }}</p>
       <p v-html="hello"></p>
@@ -8,20 +9,25 @@
       <p>{{ msg.split('Your')[1] }}</p>
     </div>
     <div class="ifBox">
-      <div v-if="code === 0">
-        <h1>code为0</h1>
-        <a href="www.baidu.com">百度搜索0</a>
+      <h2>v-if/v-else-if/v-else的使用</h2>
+      <div>
+        code: <input type="text" v-model="code" size="30" placeholder="请输入code值(0, 1)">
       </div>
-      <div v-else-if="code === 1">
-        <h1>code为1</h1>
-        <a href="www.baidu.com">百度搜索1</a>
+      <div v-if="code == 0">
+        <h3>code = 0</h3>
+        <a href="http://www.baidu.com">百度搜索0</a>
+      </div>
+      <div v-else-if="code == 1">
+        <h3>code = 1</h3>
+        <a href="http://www.baidu.com">百度搜索1</a>
       </div>
       <div v-else>
-        <h1>隐藏</h1>
-        <a href="www.baidu.com">百度搜索3</a>
+        <h3>其他隐藏</h3>
+        <a href="http://www.baidu.com">百度搜索3</a>
       </div>
     </div>
     <div>
+      <h2>v-for的使用</h2>
       <ul class="ulBox">
         <li v-for="item in userList" :key="item.id">
           <span>{{ item.name }}</span>
@@ -29,7 +35,6 @@
         </li>
       </ul>
     </div>
-    <button @click="handleClick">ClickMe</button>
   </div>
 </template>
 
@@ -77,19 +82,19 @@ li {
   font-weight: bold;
 }
 a {
-  color: #ffffff;
+  color: rgb(68, 175, 251);
   text-decoration: none;
   font-weight: bolder;
 }
-.hello {
-  width: 960px;
+.ulBox {
   margin: 0 auto;
 }
-.ulBox {
-  text-align: left;
-}
 .ifBox {
+  height: 210px;
   border: 1px solid #000000;
+}
+.ifBox a {
+  margin-top: 5px;
 }
 .myColor {
   color: red;

@@ -1,5 +1,5 @@
 <template>
-  <div class="parentBox">
+  <div class="main parentBox">
     <div class="content">
       <h2 class="inline">这是父组件(父传子Props)</h2><span @click="changeMsg" class="button">props</span>
       <p class="messageBox">父组件日志：{{ childMsg }}</p>
@@ -10,11 +10,11 @@
   </div>
 </template>
 <script>
-import childComponent from '@/components/childComponent'
+import ChildComponent from './ChildComponent'
 
 export default {
-  name: 'parentComponent',
-  components: {childComponent},
+  name: 'ParentComponent',
+  components: {ChildComponent},
   data () {
     return {
       msg: '来自父组件的消息',
@@ -37,6 +37,7 @@ export default {
     reset () {
       this.msg = '来自父组件的消息'
       this.childMsg = ''
+      this.inputContent = 'input'
     }
   },
   watch: {
@@ -57,7 +58,6 @@ export default {
 .parentBox {
   width: 600px;
   height: 300px;
-  margin: 0 auto;
   background-color: gray;
 }
 .messageBox {
@@ -89,6 +89,7 @@ export default {
   border-radius: 5px;
   color: #ffffff;
   font-weight: bolder;
+  cursor: pointer;
   background-color: rgb(68, 175, 251);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <input type="text" v-model="inputContent" @keyup.enter="getKeyInfo($event)">
     <button @click="pushArr">添加</button>
     <ul>
@@ -14,7 +14,7 @@
     <ul class="ulBox">
       <li v-for="num in wantNums" :key="num.id">{{ num }}</li>
     </ul>
-    <div class="inline">
+    <div>
       <span>按键控制: </span>
       <button @click.alt.exact="onCtrlClick">按下alt在点击</button> <!--同时按下alt和click触发-->
       <button @click.left="onClick($event)">左键点击</button>

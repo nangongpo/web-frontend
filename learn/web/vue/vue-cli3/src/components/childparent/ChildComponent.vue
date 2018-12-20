@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-  name: 'childComponent',
+  name: 'ChildComponent',
   // 类型检测
   props: {
     title: [String, Number],

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <h2>--------class绑定<button @click="bindClass2">绑定class2</button>----------</h2>
     <div class="mt-10">
       <button @click="bindClass1">绑定class1</button>
@@ -19,7 +19,7 @@
     </div>
     <div class="mt-10">
       <h3>数组语法2</h3>
-      <ul>
+      <ul class="ulBox">
         <li :class="[{changeColor: index % 2 === 0}]" v-for="(name, index) in names" :key="index">{{ name }}</li>
       </ul>
     </div>
@@ -94,5 +94,9 @@ h2, h3 {
 }
 .changeColor {
   color: red;
+}
+.ulBox {
+  width: 80px;
+  margin: 0 auto;
 }
 </style>

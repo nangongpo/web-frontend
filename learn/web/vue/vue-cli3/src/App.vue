@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2 class="inline"><img src="./assets/logo.png"><span>ue基础操作</span></h2>
+    <h2 class="inline"><img src="./assets/images/logo.png"><span>ue基础操作</span></h2>
     <ul class="navBox">
       <li v-for="item in componentsList" :key="item.id" :class="{active: isActive === item.path}" @click="jumpTo(item)">
         {{ item.path.split('/')[1] }}
@@ -50,6 +50,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+.main {
+  margin: 10px auto;
+}
 .inline {
   display: inline-block;
 }
@@ -88,5 +91,21 @@ h2 span {
 a {
   color: #000000;
   text-decoration: none;
+}
+.button {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: rgb(68, 175, 251);
+  color: #ffffff;
+  outline: 0;
+  cursor: pointer;
+  font-weight: bolder;
+  cursor: pointer;
+}
+hr {
+  margin: 0;
+  padding: 0;
 }
 </style>
