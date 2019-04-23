@@ -1,19 +1,22 @@
 <template>
-  <div class="main parentBox">
-    <div class="content">
-      <h2 class="inline">这是父组件(父传子Props)</h2><span @click="changeMsg" class="button">props</span>
-      <p class="messageBox">父组件日志：{{ childMsg }}</p>
+  <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
+    <div class="parentBox">
+      <div class="content">
+        <h2 class="inline">这是父组件(父传子Props)</h2><span @click="changeMsg" class="button">props</span>
+        <p class="messageBox">父组件日志：{{ childMsg }}</p>
+      </div>
+      <input class="mb-10" type="text" v-model="inputContent">
+      <child-component :title="msg" :lifeMsg="inputSlice" :num="age" :objData="myObj" @receive="getMsg"></child-component>
+      <span class="reset" @click="reset">重置</span>
     </div>
-    <input class="mb-10" type="text" v-model="inputContent">
-    <child-component :title="msg" :lifeMsg="inputSlice" :num="age" :objData="myObj" @receive="getMsg"></child-component>
-    <span class="reset" @click="reset">重置</span>
-  </div>
+</div>
 </template>
 <script>
 import ChildComponent from './ChildComponent'
 
 export default {
-  name: 'ParentComponent',
+  name: 'Parent',
   components: {ChildComponent},
   data () {
     return {
@@ -59,6 +62,7 @@ export default {
   width: 600px;
   height: 300px;
   background-color: gray;
+  margin: 0 auto;
 }
 .messageBox {
   width: 300px;

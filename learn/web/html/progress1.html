@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .progress {
+      height: 21px;
+      font-size: 15px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /*自定义进度条*/
+    .progress-box {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      height: 15px;
+      width: 160px;
+      border-radius: 3px;
+      background-color: rgb(234, 238, 245);
+    }
+    .progress-bar { 
+      position: absolute;
+      height: 15px;
+      top: 0;
+      left: 0;
+      border-radius: 3px;
+      background-color: rgb(0, 160, 251);
+    }
+    .progress span {
+      width: 35px;
+      margin: 0 5px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <ul class="content"></ul>
+  <script>
+    var data = [
+      {name: 'test1', percent: '30'},
+      {name: 'test2', percent: '22'},
+      {name: 'test3', percent: '30'},
+      {name: 'test4', percent: '70'},
+      {name: 'test5', percent: '22'}
+    ]
+    createProgress(data);
+    function createProgress(data) {
+      var ul = document.querySelector('.content');
+      var html = '';
+      for (var i=0; i<data.length; i++) {
+        var li = document.createElement('li');
+        html = '<div class="progress">\
+          <span>'+data[i].name+'</span>\
+          <div class="progress-box">\
+            <div class="progress-bar" style="width: '+data[i].percent+'%"></div>\
+          </div>\
+          <span>'+data[i].percent+'%</span>\
+        </div>';
+        li.innerHTML = html;
+        ul.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

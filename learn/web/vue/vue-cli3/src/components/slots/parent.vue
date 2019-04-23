@@ -1,20 +1,23 @@
 <template>
-  <div class="main parentBox">
-    <h2>父组件 —— slot的数据源来自子组件</h2>
-    <my-child>
-      <div slot="s1">
-        <p class="red" >我是slot1</p>
-        <p>Hello Slot</p>
-      </div>
-      <p slot-scope="props" slot="s2" class="red" >{{ props.text }}</p>
-    </my-child>
+  <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
+    <div class="parentBox">
+      <h2>父组件 —— slot的数据源来自子组件</h2>
+      <my-child>
+        <div slot="s1">
+          <p class="red" >我是slot1</p>
+          <p>Hello Slot</p>
+        </div>
+        <p slot-scope="props" slot="s2" class="red" >{{ props.text }}</p>
+      </my-child>
+    </div>
   </div>
 </template>
 <script>
 import MyChild from './child'
 
 export default {
-  name: 'Parent',
+  name: 'Slot',
   components: {MyChild},
   data () {
     return {
@@ -39,6 +42,7 @@ export default {
   width: 600px;
   height: 300px;
   background-color: gray;
+  margin: 0 auto;
 }
 .messageBox {
   width: 300px;

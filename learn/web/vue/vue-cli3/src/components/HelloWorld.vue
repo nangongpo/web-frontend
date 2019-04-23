@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
     <button class="button" @click="handleClick">v-show的使用</button>
     <div v-show="show">
       <p>{{ msg }}</p>
@@ -65,7 +66,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h2 {
   font-weight: normal;
 }
 ul {

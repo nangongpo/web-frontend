@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h2>animate css</h2>
+    <h1>{{this.$router.history.current.name}}</h1>
     <div>
       <h3>过渡----<button @click="showHide">隐藏/显示</button></h3>
       <div class="divBox div1">

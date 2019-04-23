@@ -10,7 +10,29 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'http://api.douban.com/v2',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+      '/test': {
+        target: 'http://localhost:8081/test/data',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/test': ''
+        }
+      },
+      '/db': {
+        target: 'http://192.168.1.150:8000/integrity',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/db': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

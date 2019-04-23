@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
     <h2>--------class绑定<button @click="bindClass2">绑定class2</button>----------</h2>
     <div class="mt-10">
       <button @click="bindClass1">绑定class1</button>

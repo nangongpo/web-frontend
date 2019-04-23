@@ -1,0 +1,72 @@
+{
+  "config": {
+    "color": ["#33FF00", "#009EF8", "#F19E27"],
+    "textStyle": {
+      "color": "#daf6ff"
+    },
+    "tooltip": {
+      "trigger": "axis"
+    },
+    "legend": {
+      "data": ["合格率", "一次合格率"],
+      "top": "10",
+      "textStyle": {
+        "color": "#fff"
+      }
+    },
+    "grid": {
+      "top": "50",
+      "bottom": "30",
+      "right": "4%"
+    },
+    "xAxis": {
+      "type": "category",
+      "axisLine": {"show": true},
+      "axisTick": {"show": true},
+      "data": [],
+      "axisLabel": {
+        "fontSize": 10,
+        "interval": 0
+      }
+    },
+    "yAxis": {
+      "type": "value",
+      "axisLine": {"show": false},
+      "axisTick": {"show": false},
+      "splitLine": {
+        "show": true,
+        "lineStyle": {
+          "color": "#445c73",
+          "width": 1,
+          "type": "solid"
+        }
+      }
+    },
+    "series": [
+      {
+        "name":"合格率",
+        "type":"bar",
+        "data":[],
+        "label": {
+          "normal": {
+            "show": true,
+            "position": "top",
+            "fontSize": "8"
+          }
+        }
+      },
+      {
+        "name":"一次合格率",
+        "type":"bar",
+        "data":[],
+        "label": {
+          "normal": {
+            "show": true,
+            "position": "top",
+            "fontSize": "8"
+          }
+        }
+      }
+    ]
+  }
+}

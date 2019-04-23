@@ -57,7 +57,7 @@ export default {
   position: relative;
 }
 .changeColor {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   background-color: gray;
   overflow: hidden;

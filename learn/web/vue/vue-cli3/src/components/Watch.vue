@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
     <p>你会得到一个yes/no的答案: <input type="text" v-model="question"></p>
     <p>{{ answer }}</p>
     <div v-show="!forced">

@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
     <h2>自定义全局指令——focus</h2>
     <input v-focus type="text">
     <h2>自定义局部指令——red</h2>
@@ -70,6 +71,7 @@ export default {
       }
     },
     // 自定义钩子样例  —— 除了 el 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 dataset 来进行
+    // Object.keys() 返回一个由一个给定对象的自身可枚举属性组成的数组
     demo: {
       bind: function (el, binding, vnode) {
         let s = JSON.stringify

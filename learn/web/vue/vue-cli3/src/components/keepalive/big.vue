@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
     <h2>切换组件</h2>
     <button @click="changeView">切换组件</button>
     <!-- <small1></small1>

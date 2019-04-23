@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>{{this.$router.history.current.name}}</h1>
     <input type="text" v-model="inputContent" @keyup.enter="getKeyInfo($event)">
     <button @click="pushArr">添加</button>
     <ul>
